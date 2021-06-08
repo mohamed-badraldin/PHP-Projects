@@ -6,17 +6,17 @@ function calculate(){
         $secondNum = $_GET['second'];
         $thirdNum = $_GET['third'];
 
-        if ( $firstNum > $secondNum ){
+        if ( $firstNum < $secondNum ){
         
-            if ( $firstNum > $thirdNum ){
-                return "Number " . $firstNum . " is the maximum ";
+            if ( $firstNum < $thirdNum ){
+                return "Number " . $firstNum . " is the minimum ";
             }
             elseif ( $firstNum === $thirdNum ) {
                 return "Number " . $firstNum . " and number " . $thirdNum . 
-                    " are equal in value and they are biger than " . $secondNum;
+                    " are equal in value and they are smaller than " . $secondNum;
             }
             else{
-                return "Number " . $thirdNum . " is the maximum ";
+                return "Number " . $thirdNum . " is the minimum ";
             }
         
         }
@@ -25,22 +25,22 @@ function calculate(){
             return "Number " . $firstNum . ", number " . $thirdNum . 
                 " and number " . $secondNum . "are equal in value";
         }
-        elseif($secondNum > $firstNum){
+        elseif($secondNum < $firstNum){
         
-            if ( $secondNum > $thirdNum ){
-                return "Number " . $secondNum . " is the maximum ";
+            if ( $secondNum < $thirdNum ){
+                return "Number " . $secondNum . " is the minimum ";
             }
             elseif ( $secondNum === $thirdNum ) {
                 return "Number " . $secondNum . " and number " . $thirdNum . 
-                    " are equal in value and they are biger than " . $thirdNum;
+                    " are equal in value and they are smaller than " . $thirdNum;
             }
             else{
-                return "Number " . $thirdNum . " is the maximum ";
+                return "Number " . $thirdNum . " is the minimum ";
             }
         }
         else{
             return "Number " . $firstNum . " and number " . $secondNum . 
-                " are equal in value and they are biger than " . $thirdNum;
+                " are equal in value and they are smaller than " . $thirdNum;
         }
     }
 }
@@ -49,7 +49,7 @@ function calculate(){
 <!doctype html>
 <html lang="en">
   <head>
-    <title>calculate the maximum</title>
+    <title>calculate-max</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -61,7 +61,7 @@ function calculate(){
         
  <!-- container to hold all inputs of form  -->
     <div class="container" style="margin-top: 150px">
-    <h1 class="mb-3" style="text-align:center;font-weight:bold">Calculate the maximum </h1>
+    <h1 class="mb-3" style="text-align:center;font-weight:bold">Calculate the minimum </h1>
         <form method="GET">
         <div class="form-row align-items-center">
             
