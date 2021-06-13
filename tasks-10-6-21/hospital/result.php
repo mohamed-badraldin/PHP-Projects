@@ -1,4 +1,5 @@
 <?php
+if(!$_POST) header('location:index.php');
 $sumSurvey = 0;
 $surveyMessage;
 if ($_POST) {
