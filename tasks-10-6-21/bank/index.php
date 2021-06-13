@@ -45,7 +45,7 @@ if(isset($_POST['loan']) && isset($_POST['years'])){
           <input name="loan" type="number" class="form-control" style="background:transparent;border-color:#f53fae;color:#fff" value="<?php if (isset($_POST['loan'])) echo $_POST['loan'] ?>">
         </div>
         <div class="form-group mb-4">
-          <label for="years" class="font-weight-bold">Loan years</label>
+          <label for="years" class="font-weight-bold" style="color:#f53fae;">Loan years</label>
           <input name="years" type="number" class="form-control" style="background:transparent;border-color:#f53fae;color:#fff" value="<?php if (isset($_POST['years'])) echo $_POST['years'] ?>">
         </div>
         <button type="submit" class="btn btn-primary form-control mt-3" style="font-weight:bold;background-color:#f53fae;border:0;">Calculate  <i class="fas fa-sign-in-alt"></i></button>
