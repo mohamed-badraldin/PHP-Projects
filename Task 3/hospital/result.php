@@ -1,5 +1,7 @@
 <?php
-if(!$_POST) header('location:index.php');
+if (!$_POST) {
+    header('location:index.php');
+}
 $sumSurvey = 0;
 $surveyMessage;
 if ($_POST) {
@@ -9,21 +11,29 @@ if ($_POST) {
         header('location:index.php');
     } else {
         foreach ($_POST as $value) {
-            if ($value === "bad") $sumSurvey += 0;
-            if ($value === "good") $sumSurvey += 3;
-            if ($value === "very good") $sumSurvey += 5;
-            if ($value === "excellent") $sumSurvey += 10;
+            if ($value === "bad") {
+                $sumSurvey += 0;
+            }
+            if ($value === "good") {
+                $sumSurvey += 3;
+            }
+            if ($value === "very good") {
+                $sumSurvey += 5;
+            }
+            if ($value === "excellent") {
+                $sumSurvey += 10;
+            }
         }
     }
 }
 if ($sumSurvey >= 25) {
     $surveyMessage = '<div class="alert col-12 font-weight-bold text-center m-0" style="background-color:#8a274c;color:white" role="alert">
                         <div class="pl-4 float-left"> Total review</div> <div class="float-right pr-4" >GOOD</div></div>' .
-                            '<div class="alert alert-success col-12 font-weight-bold text-center" role="alert">THANK YOU</div>';
+        '<div class="alert alert-success col-12 font-weight-bold text-center" role="alert">THANK YOU</div>';
 } else {
     $surveyMessage = '<div class="alert col-12 font-weight-bold text-center m-0" style="background-color:#8a274c;color:white" role="alert">
-                        <div class="pl-4 float-left"> Total review</div> <div class="float-right pr-4" >BAD</div></div>' . 
-                        '<div class="alert alert-danger col-12 font-weight-bold text-center" role="alert"> 
+                        <div class="pl-4 float-left"> Total review</div> <div class="float-right pr-4" >BAD</div></div>' .
+        '<div class="alert alert-danger col-12 font-weight-bold text-center" role="alert"> 
                              please contact the patient to find out the reason for the bad evaluation  +' . $_POST['phone'] . ' </div>';
 }
 ?>
@@ -43,7 +53,7 @@ if ($sumSurvey >= 25) {
     <script src="https://kit.fontawesome.com/02da4c92dd.js" crossorigin="anonymous"></script>
 </head>
 
-<body  style="background: url('2.jpeg') no-repeat center fixed; background-size:cover;">
+<body style="background: url('2.jpeg') no-repeat center fixed; background-size:cover;">
 
     <div class="container">
         <div class="row col-10 offset-1">

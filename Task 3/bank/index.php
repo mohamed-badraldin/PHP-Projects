@@ -1,15 +1,14 @@
-<?php 
-if(isset($_POST['loan']) && isset($_POST['years'])){
-    if($_POST['years'] < 3){
-        $interest_rate = $_POST['loan'] * 0.1 * $_POST['years']; 
-    }
-    else{
+<?php
+if (isset($_POST['loan']) && isset($_POST['years'])) {
+    if ($_POST['years'] < 3) {
+        $interest_rate = $_POST['loan'] * 0.1 * $_POST['years'];
+    } else {
         $interest_rate = $_POST['loan'] * 0.15 * $_POST['years'];
     }
     
     $loan_after_interest = $_POST['loan'] + $interest_rate;
     
-    $monthly = number_format($loan_after_interest / ($_POST['years'] * 12),2);
+    $monthly = number_format($loan_after_interest / ($_POST['years'] * 12), 2);
 }
 
 ?>
@@ -38,20 +37,26 @@ if(isset($_POST['loan']) && isset($_POST['years'])){
         <form class="col-7 offset-5 mb-5" method="POST" action="">
         <div class="form-group mb-4">
           <label for="userName" class="font-weight-bold" style="color:#f53fae;">User name</label>
-          <input name="username" type="text" class="form-control" style="background:transparent;border-color:#f53fae;color:#fff" value="<?php if (isset($_POST['username'])) echo $_POST['username'] ?>">
+          <input name="username" type="text" class="form-control" style="background:transparent;border-color:#f53fae;color:#fff" value="<?php if (isset($_POST['username'])) {
+    echo $_POST['username'];
+} ?>">
         </div>
         <div class="form-group mb-4">
           <label for="loan" class="font-weight-bold" style="color:#f53fae;">Loan amount</label>
-          <input name="loan" type="number" class="form-control" style="background:transparent;border-color:#f53fae;color:#fff" value="<?php if (isset($_POST['loan'])) echo $_POST['loan'] ?>">
+          <input name="loan" type="number" class="form-control" style="background:transparent;border-color:#f53fae;color:#fff" value="<?php if (isset($_POST['loan'])) {
+    echo $_POST['loan'];
+} ?>">
         </div>
         <div class="form-group mb-4">
           <label for="years" class="font-weight-bold" style="color:#f53fae;">Loan years</label>
-          <input name="years" type="number" class="form-control" style="background:transparent;border-color:#f53fae;color:#fff" value="<?php if (isset($_POST['years'])) echo $_POST['years'] ?>">
+          <input name="years" type="number" class="form-control" style="background:transparent;border-color:#f53fae;color:#fff" value="<?php if (isset($_POST['years'])) {
+    echo $_POST['years'];
+} ?>">
         </div>
         <button type="submit" class="btn btn-primary form-control mt-3" style="font-weight:bold;background-color:#f53fae;border:0;">Calculate  <i class="fas fa-sign-in-alt"></i></button>
         
-        <?php 
-                 if(isset($_POST['loan']) && isset($_POST['years'])){
+        <?php
+                 if (isset($_POST['loan']) && isset($_POST['years'])) {
                      echo '<table class="table mt-5">
                      <thead>
                      <tr>
@@ -68,7 +73,7 @@ if(isset($_POST['loan']) && isset($_POST['years'])){
                         </tr>
                         </tbody>
                         </table>';
-                    }
+                 }
                     ?>
                     </form>
           </div>

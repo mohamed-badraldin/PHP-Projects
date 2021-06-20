@@ -1,9 +1,7 @@
 <?php
 $td = '';
 if ($_POST) {
-
   if ($_POST['product'] !== '' && $_POST['username'] !== '') {
-
     for ($i = 1; $i <= (int)$_POST['product']; $i++) {
       $td .= '<tr>' .
         '<td><input class="form-control" name="_pro' . $i . '" type="text"></td>' .
@@ -18,11 +16,9 @@ if ($_POST) {
 if (isset($_POST['product'])) {
   $count_of_rows = $_POST['product'];
   if (isset($_POST['menu'])) {
-
     $arr_of_rows = [];
 
     for ($i = 1; $i <= $count_of_rows; $i++) {
-
       $arr = [];
 
       foreach ($_POST as $key => $val) {
@@ -33,7 +29,7 @@ if (isset($_POST['product'])) {
 
       array_push($arr_of_rows, $arr);
     }
-    
+
     $total = 0;
     $count =  count($arr_of_rows);
     for ($i = 0; $i < $count; $i++) {
@@ -41,7 +37,7 @@ if (isset($_POST['product'])) {
       array_push($arr_of_rows[$i], $sub_total);
       $total += $sub_total;
     }
-    
+
     $table_arr = [];
     for ($i = 0; $i < $count; $i++) {
       array_unshift($table_arr, '<tr>');
@@ -60,12 +56,6 @@ if (isset($_POST['product'])) {
   }
 }
 
-
-
-
-
-
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -78,7 +68,15 @@ if (isset($_POST['product'])) {
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <style> table th{color:#e81a51} table td{color:#0a183b}</style>
+  <style>
+    table th {
+      color: #e81a51
+    }
+
+    table td {
+      color: #0a183b
+    }
+  </style>
   <script src="https://kit.fontawesome.com/02da4c92dd.js" crossorigin="anonymous"></script>
 </head>
 
@@ -95,29 +93,42 @@ if (isset($_POST['product'])) {
       <form class="col-7 offset-5 mb-5" method="POST" action="">
         <div class="form-group mb-4">
           <label for="userName" class="font-weight-bold" style="color:#e81a51;">User name</label>
-          <input name="username" type="text" id="userName" class="form-control" style="background:transparent;border-color:#e81a51;color:#0a183b" value="<?php if (isset($_POST['username'])) echo $_POST['username'] ?>">
+          <input name="username" type="text" id="userName" class="form-control" style="background:transparent;border-color:#e81a51;color:#0a183b" value="<?php if (isset($_POST['username'])) {
+                                                                                                                                                            echo $_POST['username'];
+                                                                                                                                                          } ?>">
         </div>
 
         <label for="city" class="font-weight-bold" style="color:#e81a51;">City</label>
         <select name="city" class="custom-select mb-4" id="city" style="background-color:transparent;border-color:#e81a51;">
-          <option <?php if(isset($_POST['city']) && $_POST['city'] == 'cairo') echo "selected"?> value="cairo">Cairo</option>
-          <option <?php if(isset($_POST['city']) && $_POST['city'] == 'giza') echo "selected"?> value="giza">Giza</option>
-          <option <?php if(isset($_POST['city']) && $_POST['city'] == 'alex') echo "selected"?> value="alex">Alex</option>
-          <option <?php if(isset($_POST['city']) && $_POST['city'] == 'others') echo "selected"?> value="others">others</option>
+          <option <?php if (isset($_POST['city']) && $_POST['city'] == 'cairo') {
+                    echo "selected";
+                  } ?> value="cairo">Cairo</option>
+          <option <?php if (isset($_POST['city']) && $_POST['city'] == 'giza') {
+                    echo "selected";
+                  } ?> value="giza">Giza</option>
+          <option <?php if (isset($_POST['city']) && $_POST['city'] == 'alex') {
+                    echo "selected";
+                  } ?> value="alex">Alex</option>
+          <option <?php if (isset($_POST['city']) && $_POST['city'] == 'others') {
+                    echo "selected";
+                  } ?> value="others">others</option>
         </select>
 
         <div class="form-group">
           <label for="product" class="font-weight-bold" style="color:#e81a51;">Number of varieties</label>
-          <input name="product" type="number" id="product" class="form-control mb-5" style="background:transparent;border-color:#e81a51; color:#0a183b" value="<?php if (isset($_POST['product'])) echo $_POST['product'] ?>">
+          <input name="product" type="number" id="product" class="form-control mb-5" style="background:transparent;border-color:#e81a51; color:#0a183b" value="<?php if (isset($_POST['product'])) {
+                                                                                                                                                                  echo $_POST['product'];
+                                                                                                                                                                } ?>">
         </div>
 
         <button type="submit" class="btn btn-primary form-control" style="background-color:#0a183b;border:0;color:#efebdf;">Enter products</button>
         <div class="row">
           <?php
           if ($_POST) {
-            if (isset($_POST['menu'])) ob_start("replace");
+            if (isset($_POST['menu'])) {
+              ob_start("replace");
+            }
             if ($_POST['product'] !== '' && $_POST['username'] !== '') {
-
               echo
               '<table class="table table-bordered text-center mt-5 mb-3" style="color:#e81a51">
                       <thead>
@@ -140,21 +151,43 @@ if (isset($_POST['product'])) {
 
           function replace()
           {
-            global $table_str,$total;
+            global $table_str, $total;
             $discount = 0;
             $total_after_discount = 0;
-            if($total < 1000) $discount = $total * 0;  $total_after_discount = $total - $discount;
-            if($total < 3000 && $total >= 1000) $discount = $total * 0.1;  $total_after_discount = $total - $discount;
-            if($total < 4500 && $total >= 3000) $discount = $total * 0.15;  $total_after_discount = $total - $discount;
-            if($total > 4500) $discount = $total * 0.20;  $total_after_discount = $total - $discount;
+            if ($total < 1000) {
+              $discount = $total * 0;
+            }
+            $total_after_discount = $total - $discount;
+            if ($total < 3000 && $total >= 1000) {
+              $discount = $total * 0.1;
+            }
+            $total_after_discount = $total - $discount;
+            if ($total < 4500 && $total >= 3000) {
+              $discount = $total * 0.15;
+            }
+            $total_after_discount = $total - $discount;
+            if ($total > 4500) {
+              $discount = $total * 0.20;
+            }
+            $total_after_discount = $total - $discount;
 
             $delivery = 0;
-            if($_POST['city'] == 'cairo') $delivery = 0;
-            if($_POST['city'] == 'giza') $delivery = 30;
-            if($_POST['city'] == 'alex') $delivery = 50;
-            if($_POST['city'] == 'others') $delivery = 100;
-            if($total_after_discount == 0) $delivery = 0;
-            
+            if ($_POST['city'] == 'cairo') {
+              $delivery = 0;
+            }
+            if ($_POST['city'] == 'giza') {
+              $delivery = 30;
+            }
+            if ($_POST['city'] == 'alex') {
+              $delivery = 50;
+            }
+            if ($_POST['city'] == 'others') {
+              $delivery = 100;
+            }
+            if ($total_after_discount == 0) {
+              $delivery = 0;
+            }
+
             $net_total = $total_after_discount + $delivery;
 
             return '<table class="table table-bordered text-center my-5 mb-3">
@@ -167,34 +200,34 @@ if (isset($_POST['product'])) {
             </tr>
           </thead>
           <tbody>'
-              .$table_str.
+              . $table_str .
               '<tr>
               <td  colspan="2"style="font-weight:bold; text-align:left">Clint name</td>
-              <td colspan="2"style="text-align:left">'.$_POST['username'].'</td>
+              <td colspan="2"style="text-align:left">' . $_POST['username'] . '</td>
               </tr>
               <tr>
               <td  colspan="2"style="font-weight:bold; text-align:left">City</td>
-              <td colspan="2"style="text-align:left">'.$_POST['city'].'</td>
+              <td colspan="2"style="text-align:left">' . $_POST['city'] . '</td>
               </tr>
               <tr>
               <td  colspan="2"style="font-weight:bold; text-align:left">Total</td>
-              <td colspan="2"style="text-align:left">'.$total. '  EGP' .'</td>
+              <td colspan="2"style="text-align:left">' . $total . '  EGP' . '</td>
               </tr>
               <tr>
               <td  colspan="2"style="font-weight:bold; text-align:left">Discount</td>
-              <td colspan="2"style="text-align:left">'.$discount. '  EGP' .'</td>
+              <td colspan="2"style="text-align:left">' . $discount . '  EGP' . '</td>
               </tr>
               <tr>
               <td  colspan="2"style="font-weight:bold; text-align:left">Total after discount</td>
-              <td colspan="2"style="text-align:left">'.$total_after_discount. '  EGP' .'</td>
+              <td colspan="2"style="text-align:left">' . $total_after_discount . '  EGP' . '</td>
               </tr>
               <tr>
               <td  colspan="2"style="font-weight:bold; text-align:left">Delivery</td>
-              <td colspan="2"style="text-align:left">'.$delivery. '  EGP' .'</td>
+              <td colspan="2"style="text-align:left">' . $delivery . '  EGP' . '</td>
               </tr>
               <tr>
               <td  colspan="2"style="font-weight:bold; color:#e81a51; text-align:left">Net Total</td>
-              <td  colspan="2"style="font-weight:bold; text-align:left">'.$net_total. '  EGP' .'</td>
+              <td  colspan="2"style="font-weight:bold; text-align:left">' . $net_total . '  EGP' . '</td>
               </tr>
           </tbody>
           </table>';

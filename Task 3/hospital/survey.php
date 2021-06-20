@@ -1,6 +1,8 @@
 <?php
 if ($_POST) {
-    if (!$_POST['phone']) header("location:index.php");
+    if (!$_POST['phone']) {
+        header("location:index.php");
+    }
 }
 ?>
 
@@ -18,7 +20,7 @@ if ($_POST) {
     <script src="https://kit.fontawesome.com/02da4c92dd.js" crossorigin="anonymous"></script>
 </head>
 
-<body  style="background: url('2.jpeg') no-repeat center fixed; background-size:cover;">
+<body style="background: url('2.jpeg') no-repeat center fixed; background-size:cover;">
     <div class="container">
         <h1 class="display-3 my-5" style="color:#8a274c;"><i class="fas fa-hospital-symbol"></i>ospital survey</h1>
         <div class="row">
