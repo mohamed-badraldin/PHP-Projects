@@ -11,7 +11,7 @@ require_once('app/models/City.php');
 
 ///////////////////////////////////////////////////////////////////////////// update user info start //
 if (isset($_POST['update-info'])) {
-    $info = [];
+    $errorsinfo = [];
     if (
         isset($_POST['name']) && $_POST['name'] &&
         isset($_POST['phone']) && $_POST['phone'] &&
