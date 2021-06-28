@@ -20,7 +20,7 @@ if (isset($_POST['update-info'])) {
         // update user info //
         $update = new User;
         $update->setName($_POST['name']);
-        $update->setEmail($_POST['phone']);
+        $update->setphone($_POST['phone']);
         $update->setGender($_POST['gender']);
         $update->setId($_SESSION['user']->id);
 
