@@ -236,5 +236,3 @@ class Address extends Database implements operaitons {
        return $this->runDQL($query);
     }
 }
-
-?>

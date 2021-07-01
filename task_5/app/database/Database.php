@@ -6,7 +6,7 @@ class Database
     private $password = '';
     private $name = 'nti_ecommerce';
     private $connect;
-    
+
     // Connection
     public function __construct()
     {
@@ -20,7 +20,7 @@ class Database
     public function runDML($query)
     {
         $result = $this->connect->query($query);
-        return ($result) ? true : false ;
+        return ($result) ? true : false;
     }
 
     // DQL method to select the Data

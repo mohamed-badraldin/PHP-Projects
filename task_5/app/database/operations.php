@@ -5,4 +5,3 @@ interface operaitons {
     function deleteData();
     function selectAllData();
 }
-?>

@@ -8,5 +8,3 @@ header('location:index.php');
 // Guest //
 if(!isset($_SESSION['user']) && ($current_page === 'profile' || $current_page === 'logout') )
 header('location:login.php');
-
-?>

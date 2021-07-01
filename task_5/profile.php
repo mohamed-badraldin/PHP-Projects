@@ -339,16 +339,16 @@ $cities = $cityObj->selectAllData();
                                                     <div class="form-group col-md-12">
                                                         <label for="region">Region</label>
                                                         <select name="region" class="form-control id=" region">
-                                                        <?php foreach($cities as $city) {?>
-                                                            <optgroup label="<?php echo $city['name']?>">
-                                                                <?php 
-                                                                $city_regions = $region->selectCityRegions($city['id']);
-                                                                foreach($city_regions as $reg){
-                                                                ?>
-                                                                <option <?php echo ($reg['id'] == $address['region_id']) ? 'selected' : ''?>value="<?php echo $reg['id']?>"><?php echo $reg['name']?></option>
-                                                                <?php }?>
-                                                            </optgroup>
-                                                            <?php }?>
+                                                            <?php foreach ($cities as $city) { ?>
+                                                                <optgroup label="<?php echo $city['name'] ?>">
+                                                                    <?php
+                                                                    $city_regions = $region->selectCityRegions($city['id']);
+                                                                    foreach ($city_regions as $reg) {
+                                                                    ?>
+                                                                        <option <?php echo ($reg['id'] == $address['region_id']) ? 'selected' : '' ?>value="<?php echo $reg['id'] ?>"><?php echo $reg['name'] ?></option>
+                                                                    <?php } ?>
+                                                                </optgroup>
+                                                            <?php } ?>
                                                         </select>
                                                     </div>
                                                 </div>

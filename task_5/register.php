@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
 
     $user_validation->setEmail($_POST['email']);
     $email_errors = $user_validation->emailValidation();
-    
+
     // pass user values to User class //
     if (!$password_erros && !$email_errors) {
         $user = new User;

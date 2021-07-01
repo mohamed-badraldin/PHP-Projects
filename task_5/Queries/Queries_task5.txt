@@ -1,0 +1,103 @@
+
+ Newest products
+=====================================================================================
+SELECT `products`. *  FROM `products` ORDER BY `products`.`created_at` DESC LIMIT 4
+=====================================================================================
+
+
+Most Rated Products
+=====================================================================================
+SELECT
+    `products`.`name`,
+    SUM(`reviews`.`rate_value`) AS `Total-Rate`,
+    COUNT(`reviews`.`rate_value`) AS `Count-Rate`
+FROM
+    `products`
+LEFT JOIN `reviews` ON `reviews`.`product_id` = `products`.`id`
+GROUP BY
+    `products`.`id`
+ORDER BY
+    `Total-Rate` DESC,
+    `Count-Rate` DESC
+LIMIT 4
+=====================================================================================
+
+
+Most Ordered
+=====================================================================================
+SELECT
+    `products`.`name`,
+    COUNT(`order_product`.`product_id`) AS `Count-Orders`
+FROM
+    `products`
+LEFT JOIN `order_product` ON `order_product`.`product_id` = `products`.`id`
+GROUP BY
+    `products`.`id`
+ORDER BY
+    `Count-Orders` DESC
+LIMIT 4
+=====================================================================================
+
+
+Select all offers
+=====================================================================================
+SELECT `offers`.* FROM `offers`
+=====================================================================================
+
+
+Select all active offers 
+=====================================================================================
+SELECT `offers`.* FROM `offers` WHERE `offers`.`status` = 1
+=====================================================================================
+
+
+Select products of each offer by ID 
+=====================================================================================
+SELECT `offer_id`, GROUP_CONCAT(`product_id`) AS `offer's product id`
+FROM `offer_products`
+GROUP BY `offer_id`
+=====================================================================================
+
+
+
+Select products of each offer by Name
+=====================================================================================
+SELECT
+		`offers`.`title` AS `Offer Title`, 
+    	GROUP_CONCAT(`products`.`name`)  AS `Offer's products name`
+FROM
+    `offer_products`
+
+JOIN `offers` ON `offers`.`id` = `offer_products`.`offer_id`
+JOIN `products` ON `products`.`id` = `offer_products`.`product_id`
+
+GROUP BY
+    `offer_id`
+=====================================================================================
+
+
+
+Select products of each offer by Name & ID
+=====================================================================================
+SELECT
+	`offer_id`,
+	`offers`.`title` AS `Offer Title`, 
+    	GROUP_CONCAT(`product_id`)  AS `Offer's products id`,
+    	GROUP_CONCAT(`products`.`name`)  AS `Offer's products name`
+FROM
+    `offer_products`
+
+JOIN `offers` ON `offers`.`id` = `offer_products`.`offer_id`
+JOIN `products` ON `products`.`id` = `offer_products`.`product_id`
+
+GROUP BY
+    `offer_id`
+=====================================================================================
+
+
+
+
+
+
+
+

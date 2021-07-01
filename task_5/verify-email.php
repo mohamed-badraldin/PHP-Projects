@@ -1,24 +1,23 @@
-<?php 
-require_once( "layout/head.php");
-require_once( "app/validations/User_validation.php");
-require_once( "app/models/User.php");
+<?php
+require_once("layout/head.php");
+require_once("app/validations/User_validation.php");
+require_once("app/models/User.php");
 require_once('app/phpmailer/phpmailer.php');
 
-if($_POST) {
+if ($_POST) {
     $user_validation = new User_validation;
     $user_validation->setEmail($_POST['email']);
     $email_errors = $user_validation->emailValidation();
-    if(!$email_errors) {
+    if (!$email_errors) {
         $user = new User;
         $user->setEmail($_POST['email']);
         $existUser = $user->emailCheckDB();
-        if($existUser){
+        if ($existUser) {
             sendMail($existUser->name, $existUser->code, $existUser->email);
-        }
-        else{
+        } else {
             $errors['someThing'] = "<div class='alert alert-danger'> SomeThing Went Wrong </div>";
         }
-    }else{
+    } else {
         $errors['email'] = "<div class='alert alert-danger'> This Email Not Exist </div>";
     }
 }
@@ -43,17 +42,17 @@ if($_POST) {
                                 <div class="login-register-form">
                                     <form action="" method="post">
                                         <input type="email" name="email" placeholder="Email">
-                                        <?php 
-                                            if(isset($email_errors) && $email_errors){
-                                                foreach($email_errors as $value ){
-                                                    echo $value;
-                                                }
+                                        <?php
+                                        if (isset($email_errors) && $email_errors) {
+                                            foreach ($email_errors as $value) {
+                                                echo $value;
                                             }
-                                            if(isset($errors) && $errors){
-                                                foreach($errors as $value ){
-                                                    echo $value;
-                                                }
+                                        }
+                                        if (isset($errors) && $errors) {
+                                            foreach ($errors as $value) {
+                                                echo $value;
                                             }
+                                        }
                                         ?>
                                         <div class="button-box">
                                             <button name="submit" type="submit"><span>Verify</span></button>
